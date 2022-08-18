@@ -19,6 +19,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
+provider "aws" {
+  profile = "default"
+  region  = var.default_region
+}
+
 ## EC2 instances ##
 # vpc: vpc-032215522f09a469a
 # subnet: subnet-0c3b7bae52c2ee3c0
@@ -31,5 +36,5 @@ module "web_app" {
   subnet                    = "subnet-0c3b7bae52c2ee3c0"
   security_groups           = ["sg-0b93b58396bac7247"]
   user_data                 = file("./modules/ec2/httpd.sh")
-  key_pair                  = file("./portfolio.pem")
+  # key_pair                  = file("./portfolio.pem")
 }
