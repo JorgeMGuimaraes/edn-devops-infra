@@ -16,7 +16,7 @@ variable "instance_root_device_size" {
 }
 
 variable "subnet" {
-  type        = list(string)
+  type        = string
   description = "Valid subnet to assign"
 }
 
@@ -29,4 +29,9 @@ variable "security_groups" {
 variable "user_data" {
   type        = string
   description = "Post install script"
+}
+
+variable "key_pair" {
+  type        = string
+  description = "Permission ssh private key"
 }
