@@ -31,7 +31,7 @@ variable "user_data" {
   description = "Post install script"
 }
 
-variable "key_pair" {
+variable "public_key" {
   type        = string
-  description = "Permission ssh private key"
+  description = "Permission ssh public key"
 }

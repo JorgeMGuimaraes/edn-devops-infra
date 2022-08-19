@@ -35,6 +35,6 @@ module "web_app" {
   instance_root_device_size = 8
   subnet                    = "subnet-0c3b7bae52c2ee3c0"
   security_groups           = ["sg-0b93b58396bac7247"]
-  user_data                 = file("./modules/ec2/httpd.sh")
-  # key_pair                  = file("./portfolio.pem")
+  user_data                 = file("${path.root}/modules/ec2/httpd.sh")
+  public_key                = file("${path.root}/aws_key.pub")
 }
