@@ -13,11 +13,11 @@ resource "aws_instance" "small_server" {
   associate_public_ip_address = true
 
   tags = {
-    Name = "Web App"
+    Name = var.server_name
   }
 }
 
 resource "aws_key_pair" "portfolio_key" {
-  key_name   = "aws_key"
+  #key_name   = "aws_key"
   public_key = var.public_key
 }

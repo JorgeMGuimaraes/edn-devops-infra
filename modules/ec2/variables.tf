@@ -35,3 +35,8 @@ variable "public_key" {
   type        = string
   description = "Permission ssh public key"
 }
+
+variable "server_name" {
+  type        = string
+  description = "Server name"
+}
