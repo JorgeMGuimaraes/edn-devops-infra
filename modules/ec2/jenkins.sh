@@ -3,14 +3,62 @@
 # Script  to allow user to automate Jenkins install and setup process.
 # Based on https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code
 # but with updates:
+#   - install docker, based on Docker official docs
 #   - this script creates / downloads all files
 #   - using Jenkins Plugin Manager jar (a workaroud for install-plugins.sh)
 
 # variables
-jcasc_dir=$HOME/playground/jcasc
+cloud_user="ubuntu"
+jcasc_dir=/home/ubuntu/playground/jcasc
 jpm=jenkins-plugin-manager
 jpm_release=2.12.8
 ip='192.168.122.214'
+
+######################################################
+## Install and Setup Docker
+######################################################
+
+sudo apt remove -y \
+    docker \
+    docker.io \
+    containerd
+
+sudo apt update
+
+sudo apt install -y \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+
+sudo mkdir -p /etc/apt/keyrings
+
+curl \
+    -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt update
+
+sudo apt install -y \
+    docker-ce \
+    docker-ce-cli \
+    containerd.io \
+    docker-compose-plugin
+
+sudo groupadd docker
+sudo usermod -aG docker $cloud_user
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
+######################################################
+## Install and Setup Jenkins
+######################################################
 
 # set dir
 mkdir -p $jcasc_dir
