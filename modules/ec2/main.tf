@@ -1,4 +1,4 @@
-resource "aws_instance" "small_server" {
+resource "aws_instance" "server" {
   ami           = var.instance_ami
   instance_type = var.instance_type
   key_name      = aws_key_pair.portfolio_key.key_name
