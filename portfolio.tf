@@ -47,6 +47,18 @@ module "jenkins" {
   server_name               = "Jenkins Server"
 }
 
+# module "web_server" {
+#   source          = "./modules/asg"
+#   instance_ami    = data.aws_ami.ubuntu.id
+#   instance_type   = var.instance_type
+#   az              = "sa-east-1a"
+#   user_data       = file("${path.root}/modules/ec2/httpd.sh")
+#   public_key      = file("${path.root}/aws_key.pub")
+#   subnet          = "subnet-0c3b7bae52c2ee3c0"
+#   security_groups = ["sg-0b93b58396bac7247"]
+# }
+
+
 module "assets_storage" {
   source      = "./modules/s3"
   bucket_name = "d71bc2c3-a7d7-4d1c-9693-f53459dc02ee"
