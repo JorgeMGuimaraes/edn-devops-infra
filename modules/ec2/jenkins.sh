@@ -87,6 +87,7 @@ matrix-auth:latest
 pam-auth:latest
 pipeline-github-lib:latest
 pipeline-stage-view:latest
+publish-over-ssh:latest
 ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
@@ -134,10 +135,10 @@ EOF
 docker build -t jenkins:jcasc .
 
 # Run docker:
-docker run \
-  --name jenkins\
-  --rm \
-  -p 8080:8080 \
-  --env JENKINS_ADMIN_ID=admin_xxxxxx \
-  --env JENKINS_ADMIN_PASSWORD=password_xxxxxx \
-   jenkins:jcas
+# docker run \
+#   --name jenkins\
+#   --rm \
+#   -p 8080:8080 \
+#   --env JENKINS_ADMIN_ID=admin_xxxxxx \
+#   --env JENKINS_ADMIN_PASSWORD=password_xxxxxx \
+#    jenkins:jcas
