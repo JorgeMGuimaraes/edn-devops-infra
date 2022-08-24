@@ -88,6 +88,7 @@ pam-auth:latest
 pipeline-github-lib:latest
 pipeline-stage-view:latest
 publish-over-ssh:latest
+s3:latest
 ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
