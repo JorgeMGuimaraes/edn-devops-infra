@@ -46,3 +46,9 @@ module "jenkins" {
   public_key                = file("${path.root}/aws_key.pub")
   server_name               = "Jenkins Server"
 }
+
+module "assets_storage" {
+  source      = "./modules/s3"
+  bucket_name = "d71bc2c3-a7d7-4d1c-9693-f53459dc02ee"
+  region      = var.default_region
+}
