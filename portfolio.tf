@@ -19,10 +19,6 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-## EC2 instances ##
-# vpc: vpc-032215522f09a469a
-# subnet: subnet-0c3b7bae52c2ee3c0
-#sg: sg-0b93b58396bac7247
 module "web_app" {
   source                    = "./modules/ec2"
   instance_ami              = data.aws_ami.ubuntu.id

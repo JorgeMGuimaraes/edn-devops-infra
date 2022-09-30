@@ -12,7 +12,7 @@ cloud_user="ubuntu"
 jcasc_dir=/home/ubuntu/playground/jcasc
 jpm=jenkins-plugin-manager
 jpm_release=2.12.8
-ip='192.168.122.214'
+ip='xxxxxxxxxxx'
 
 ######################################################
 ## Install and Setup Docker
